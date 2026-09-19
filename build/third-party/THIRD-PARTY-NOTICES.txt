@@ -1,0 +1,255 @@
+THIRD-PARTY SOFTWARE NOTICES — Career Assistant 1.0.0
+
+This inventory preserves license texts shipped with installed npm packages and supplemental upstream notices. It is not a grant of rights for Career Assistant itself. Electron/Chromium bundled notices are also shipped as LICENSE.electron.txt and LICENSES.chromium.html beside the EXE. Native/OCR data upstream licenses are included; see provenance.json.
+
+@napi-rs/canvas 1.0.9 — MIT
+  @napi-rs__canvas@1.0.9-LICENSE
+@napi-rs/canvas-win32-x64-msvc 1.0.9 — MIT
+  @napi-rs__canvas-win32-x64-msvc@1.0.9-LICENSE.txt
+@tesseract.js-data/chi_sim 1.0.0 — MIT
+  See reviewRequired in INVENTORY.json
+@tesseract.js-data/eng 1.0.0 — MIT
+  See reviewRequired in INVENTORY.json
+@types/debug 4.1.13 — MIT
+  @types__debug@4.1.13-LICENSE
+@types/estree 1.0.9 — MIT
+  @types__estree@1.0.9-LICENSE
+@types/estree-jsx 1.0.5 — MIT
+  @types__estree-jsx@1.0.5-LICENSE
+@types/hast 3.0.5 — MIT
+  @types__hast@3.0.5-LICENSE
+@types/mdast 4.0.4 — MIT
+  @types__mdast@4.0.4-LICENSE
+@types/ms 2.1.0 — MIT
+  @types__ms@2.1.0-LICENSE
+@types/react 19.3.0 — MIT
+  @types__react@19.3.0-LICENSE
+@types/unist 3.0.3 — MIT
+  @types__unist@3.0.3-LICENSE
+@types/unist 2.0.11 — MIT
+  @types__unist@2.0.11-LICENSE
+@ungap/structured-clone 1.4.0 — ISC
+  @ungap__structured-clone@1.4.0-LICENSE
+bail 2.0.2 — MIT
+  bail@2.0.2-license
+bmp-js 0.1.0 — MIT
+  bmp-js@0.1.0-LICENSE
+ccount 2.0.1 — MIT
+  ccount@2.0.1-license
+character-entities 2.0.2 — MIT
+  character-entities@2.0.2-license
+character-entities-html4 2.1.0 — MIT
+  character-entities-html4@2.1.0-license
+character-entities-legacy 3.0.0 — MIT
+  character-entities-legacy@3.0.0-license
+character-reference-invalid 2.0.1 — MIT
+  character-reference-invalid@2.0.1-license
+comma-separated-tokens 2.0.3 — MIT
+  comma-separated-tokens@2.0.3-license
+core-util-is 1.0.3 — MIT
+  core-util-is@1.0.3-LICENSE
+csstype 3.2.3 — MIT
+  csstype@3.2.3-LICENSE
+debug 4.4.3 — MIT
+  debug@4.4.3-LICENSE
+decode-named-character-reference 1.3.0 — MIT
+  decode-named-character-reference@1.3.0-license
+dequal 2.0.3 — MIT
+  dequal@2.0.3-license
+devlop 1.1.0 — MIT
+  devlop@1.1.0-license
+docx-preview 0.4.0 — Apache-2.0
+  docx-preview@0.4.0-LICENSE
+estree-util-is-identifier-name 3.0.0 — MIT
+  estree-util-is-identifier-name@3.0.0-license
+extend 3.0.2 — MIT
+  extend@3.0.2-LICENSE
+fflate 0.8.3 — MIT
+  fflate@0.8.3-LICENSE
+hast-util-to-jsx-runtime 2.3.6 — MIT
+  hast-util-to-jsx-runtime@2.3.6-license
+hast-util-whitespace 3.0.0 — MIT
+  hast-util-whitespace@3.0.0-license
+html-url-attributes 3.0.1 — MIT
+  html-url-attributes@3.0.1-license
+idb-keyval 6.3.0 — Apache-2.0
+  idb-keyval@6.3.0-LICENCE
+immediate 3.0.6 — MIT
+  immediate@3.0.6-LICENSE.txt
+inherits 2.0.4 — ISC
+  inherits@2.0.4-LICENSE
+inline-style-parser 0.2.7 — MIT
+  inline-style-parser@0.2.7-LICENSE
+is-alphabetical 2.0.1 — MIT
+  is-alphabetical@2.0.1-license
+is-alphanumerical 2.0.1 — MIT
+  is-alphanumerical@2.0.1-license
+is-decimal 2.0.1 — MIT
+  is-decimal@2.0.1-license
+is-hexadecimal 2.0.1 — MIT
+  is-hexadecimal@2.0.1-license
+is-plain-obj 4.1.0 — MIT
+  is-plain-obj@4.1.0-license
+is-url 1.2.4 — MIT
+  is-url@1.2.4-LICENSE-MIT
+isarray 1.0.0 — MIT
+  isarray@1.0.0-LICENSE-from-README.txt
+jszip 3.10.2 — (MIT OR GPL-3.0-or-later)
+  jszip@3.10.2-LICENSE.markdown
+lie 3.3.0 — MIT
+  lie@3.3.0-license.md
+longest-streak 3.1.0 — MIT
+  longest-streak@3.1.0-license
+lucide-react 1.46.0 — ISC
+  lucide-react@1.46.0-LICENSE
+mdast-util-from-markdown 2.0.3 — MIT
+  mdast-util-from-markdown@2.0.3-license
+mdast-util-mdx-expression 2.0.1 — MIT
+  mdast-util-mdx-expression@2.0.1-license
+mdast-util-mdx-jsx 3.2.0 — MIT
+  mdast-util-mdx-jsx@3.2.0-license
+mdast-util-mdxjs-esm 2.0.1 — MIT
+  mdast-util-mdxjs-esm@2.0.1-license
+mdast-util-phrasing 4.1.0 — MIT
+  mdast-util-phrasing@4.1.0-license
+mdast-util-to-hast 13.2.1 — MIT
+  mdast-util-to-hast@13.2.1-license
+mdast-util-to-markdown 2.1.2 — MIT
+  mdast-util-to-markdown@2.1.2-license
+mdast-util-to-string 4.0.0 — MIT
+  mdast-util-to-string@4.0.0-license
+micromark 4.0.2 — MIT
+  micromark@4.0.2-license
+micromark-core-commonmark 2.0.3 — MIT
+  micromark-core-commonmark@2.0.3-license
+micromark-factory-destination 2.0.1 — MIT
+  micromark-factory-destination@2.0.1-license
+micromark-factory-label 2.0.1 — MIT
+  micromark-factory-label@2.0.1-license
+micromark-factory-space 2.0.1 — MIT
+  micromark-factory-space@2.0.1-license
+micromark-factory-title 2.0.1 — MIT
+  micromark-factory-title@2.0.1-license
+micromark-factory-whitespace 2.0.1 — MIT
+  micromark-factory-whitespace@2.0.1-license
+micromark-util-character 2.1.1 — MIT
+  micromark-util-character@2.1.1-license
+micromark-util-chunked 2.0.1 — MIT
+  micromark-util-chunked@2.0.1-license
+micromark-util-classify-character 2.0.1 — MIT
+  micromark-util-classify-character@2.0.1-license
+micromark-util-combine-extensions 2.0.1 — MIT
+  micromark-util-combine-extensions@2.0.1-license
+micromark-util-decode-numeric-character-reference 2.0.2 — MIT
+  micromark-util-decode-numeric-character-reference@2.0.2-license
+micromark-util-decode-string 2.0.1 — MIT
+  micromark-util-decode-string@2.0.1-license
+micromark-util-encode 2.0.1 — MIT
+  micromark-util-encode@2.0.1-license
+micromark-util-html-tag-name 2.0.1 — MIT
+  micromark-util-html-tag-name@2.0.1-license
+micromark-util-normalize-identifier 2.0.1 — MIT
+  micromark-util-normalize-identifier@2.0.1-license
+micromark-util-resolve-all 2.0.1 — MIT
+  micromark-util-resolve-all@2.0.1-license
+micromark-util-sanitize-uri 2.0.1 — MIT
+  micromark-util-sanitize-uri@2.0.1-license
+micromark-util-subtokenize 2.1.0 — MIT
+  micromark-util-subtokenize@2.1.0-license
+micromark-util-symbol 2.0.1 — MIT
+  micromark-util-symbol@2.0.1-license
+micromark-util-types 2.0.2 — MIT
+  micromark-util-types@2.0.2-license
+ms 2.1.3 — MIT
+  ms@2.1.3-license.md
+node-fetch 2.7.0 — MIT
+  node-fetch@2.7.0-LICENSE.md
+opencollective-postinstall 2.0.3 — MIT
+  opencollective-postinstall@2.0.3-LICENSE
+pako 1.0.11 — (MIT AND Zlib)
+  pako@1.0.11-LICENSE
+parse-entities 4.0.2 — MIT
+  parse-entities@4.0.2-license
+pdfjs-dist 6.3.289 — Apache-2.0
+  pdfjs-dist@6.3.289-LICENSE
+process-nextick-args 2.0.1 — MIT
+  process-nextick-args@2.0.1-license.md
+property-information 7.2.0 — MIT
+  property-information@7.2.0-license
+react 19.3.0 — MIT
+  react@19.3.0-LICENSE
+react-dom 19.3.0 — MIT
+  react-dom@19.3.0-LICENSE
+react-markdown 10.1.0 — MIT
+  react-markdown@10.1.0-license
+readable-stream 2.3.8 — MIT
+  readable-stream@2.3.8-LICENSE
+regenerator-runtime 0.13.11 — MIT
+  regenerator-runtime@0.13.11-LICENSE
+remark-parse 11.0.0 — MIT
+  remark-parse@11.0.0-license
+remark-rehype 11.1.2 — MIT
+  remark-rehype@11.1.2-license
+safe-buffer 5.1.2 — MIT
+  safe-buffer@5.1.2-LICENSE
+scheduler 0.28.0 — MIT
+  scheduler@0.28.0-LICENSE
+setimmediate 1.0.5 — MIT
+  setimmediate@1.0.5-LICENSE.txt
+space-separated-tokens 2.0.2 — MIT
+  space-separated-tokens@2.0.2-license
+string_decoder 1.1.1 — MIT
+  string_decoder@1.1.1-LICENSE
+stringify-entities 4.0.4 — MIT
+  stringify-entities@4.0.4-license
+style-to-js 1.1.21 — MIT
+  style-to-js@1.1.21-LICENSE
+style-to-object 1.0.14 — MIT
+  style-to-object@1.0.14-LICENSE
+tesseract.js 7.0.0 — Apache-2.0
+  tesseract.js@7.0.0-LICENSE.md
+tesseract.js-core 7.0.0 — Apache-2.0
+  tesseract.js-core@7.0.0-LICENSE
+tr46 0.0.3 — MIT
+  See reviewRequired in INVENTORY.json
+trim-lines 3.0.1 — MIT
+  trim-lines@3.0.1-license
+trough 2.2.0 — MIT
+  trough@2.2.0-license
+undici 7.29.1 — MIT
+  undici@7.29.1-LICENSE
+unified 11.0.5 — MIT
+  unified@11.0.5-license
+unist-util-is 6.0.1 — MIT
+  unist-util-is@6.0.1-license
+unist-util-position 5.0.0 — MIT
+  unist-util-position@5.0.0-license
+unist-util-stringify-position 4.0.0 — MIT
+  unist-util-stringify-position@4.0.0-license
+unist-util-visit 5.1.0 — MIT
+  unist-util-visit@5.1.0-license
+unist-util-visit-parents 6.0.2 — MIT
+  unist-util-visit-parents@6.0.2-license
+util-deprecate 1.0.2 — MIT
+  util-deprecate@1.0.2-LICENSE
+vfile 6.0.3 — MIT
+  vfile@6.0.3-license
+vfile-message 4.0.3 — MIT
+  vfile-message@4.0.3-license
+wasm-feature-detect 1.9.0 — Apache-2.0
+  wasm-feature-detect@1.9.0-LICENSE
+webidl-conversions 3.0.1 — BSD-2-Clause
+  webidl-conversions@3.0.1-LICENSE.md
+whatwg-url 5.0.0 — MIT
+  whatwg-url@5.0.0-LICENSE.txt
+zlibjs 0.3.1 — MIT
+  zlibjs@0.3.1-LICENSE
+zwitch 2.0.4 — MIT
+  zwitch@2.0.4-license
+
+REVIEW REQUIRED BEFORE PUBLIC DISTRIBUTION
+@tesseract.js-data/chi_sim: Installed npm archive declares MIT but contains no full license text; upstream supplemental notices are included separately. Do not interpret this inventory as a legal clearance.
+@tesseract.js-data/eng: Installed npm archive declares MIT but contains no full license text; upstream supplemental notices are included separately. Do not interpret this inventory as a legal clearance.
+tr46: Installed npm archive declares MIT but contains no full license text; upstream supplemental notices are included separately. Do not interpret this inventory as a legal clearance.
+
+The project author has not selected a top-level open-source license; do not describe the application as licensed under these third-party terms.

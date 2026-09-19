@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-electron/
+.npm-cache/
+.electron-cache/
+.test-data/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+*.log
+
+release/
+
+.electron-builder-cache/

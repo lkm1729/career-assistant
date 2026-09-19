@@ -1,0 +1,22 @@
+{
+  "googleSans": {
+    "release": "v14.000",
+    "url": "https://github.com/googlefonts/googlesans/releases/download/v14.000/GoogleSans-v14.000.zip",
+    "license": "SIL OFL-1.1",
+    "files": [
+      {
+        "file": "GoogleSans.ttf",
+        "sha256": "d0a87d835a944b8b40d0e82a5651bb59ab97b936a2aeed5946eb57e7b2a3a90a"
+      },
+      {
+        "file": "GoogleSans-Italic.ttf",
+        "sha256": "b6662abd2131cad1b248750149a7f2b644f871ebcc9af7fe4cd1135cd290b6d1"
+      }
+    ]
+  },
+  "miSans": {
+    "bundled": false,
+    "source": "https://hyperos.mi.com/font/zh/download/",
+    "policy": "Use only a user-installed font; no redistribution or modification of MiSans files. Microsoft YaHei/system sans-serif fallback is available offline."
+  }
+}

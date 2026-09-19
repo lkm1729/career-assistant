@@ -1,0 +1,119 @@
+{
+  "name": "career-assistant",
+  "productName": "Career Assistant",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Four independent AI career workspaces for Windows",
+  "author": "Career Assistant contributors",
+  "type": "module",
+  "main": "dist-electron/main.cjs",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run typecheck && vite build && node scripts/build-electron.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "npm run build && playwright test",
+    "start": "node scripts/start.mjs",
+    "format": "prettier --write src electron shared scripts tests *.json *.ts index.html",
+    "format:check": "prettier --check src electron shared scripts tests *.json *.ts index.html",
+    "package": "npm run build && node scripts/package-win.mjs",
+    "licenses": "node scripts/build-licenses.mjs"
+  },
+  "dependencies": {
+    "@tesseract.js-data/chi_sim": "1.0.0",
+    "@tesseract.js-data/eng": "1.0.0",
+    "docx-preview": "0.4.0",
+    "fflate": "0.8.3",
+    "lucide-react": "1.46.0",
+    "pdfjs-dist": "6.3.289",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-markdown": "10.1.0",
+    "tesseract.js": "7.0.0",
+    "undici": "7.29.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "26.5.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "electron": "44.3.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.28.2",
+    "prettier": "3.9.6",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "vite": "8.3.0"
+  },
+  "build": {
+    "appId": "com.careerassistant.desktop",
+    "productName": "Career Assistant",
+    "artifactName": "Career-Assistant-${buildVersion}-win-x64.${ext}",
+    "directories": {
+      "output": "release/1.0.0",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "requestedExecutionLevel": "asInvoker",
+      "icon": "build/icon.ico"
+    },
+    "electronFuses": {
+      "runAsNode": false,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "onlyLoadAppFromAsar": true,
+      "enableEmbeddedAsarIntegrityValidation": true
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": false,
+      "packElevateHelper": false,
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": false,
+      "createDesktopShortcut": false,
+      "createStartMenuShortcut": true,
+      "artifactName": "Career-Assistant-${buildVersion}-Setup-x64.exe",
+      "include": "build/installer.nsh",
+      "uninstallDisplayName": "${productName} ${buildVersion}"
+    },
+    "extraResources": [
+      {
+        "from": "build/third-party",
+        "to": "licenses",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "extraFiles": [
+      {
+        "from": "build/DISTRIBUTION-NOTES.txt",
+        "to": "DISTRIBUTION-NOTES.txt"
+      }
+    ],
+    "buildVersion": "1.0.0"
+  }
+}

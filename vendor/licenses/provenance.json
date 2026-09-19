@@ -1,0 +1,40 @@
+{
+  "retrievedAt": "2026-09-17",
+  "sources": [
+    {
+      "file": "GoogleSans-OFL.txt",
+      "url": "https://raw.githubusercontent.com/googlefonts/googlesans/v14.000/OFL.txt",
+      "sha256": "831b6e041705873c3e6efb18c4c96202bc41c8be42a456d3d26c47abf14816d0"
+    },
+    {
+      "file": "GoogleSans-TRADEMARKS.txt",
+      "url": "https://raw.githubusercontent.com/googlefonts/googlesans/v14.000/TRADEMARKS.txt",
+      "sha256": "9b75a5efcc2de1e1aa214a896c4d58a5544c1d88cb1e3fb7a42281404ff10708"
+    },
+    {
+      "file": "GoogleSans-AUTHORS.txt",
+      "url": "https://raw.githubusercontent.com/googlefonts/googlesans/v14.000/AUTHORS.txt",
+      "sha256": "5f1d5effad4dc53bca91ccedd73a070bf65d60c50f4b3e9f3bf8d86be6b193ed"
+    },
+    {
+      "file": "tr46-upstream-LICENSE.md",
+      "url": "https://raw.githubusercontent.com/jsdom/tr46/main/LICENSE.md",
+      "sha256": "499d6d466d064e0460427967a344e2a32fcb86ea8c6cd1a285ec4f1fa03fba67"
+    },
+    {
+      "file": "tessdata-Apache-LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata/main/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "file": "skia-LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/google/skia/main/LICENSE",
+      "sha256": "5f787c1dee3c56547f09ccc2906ab5f5293c4d8dd6c8654e573216c38e908dbd"
+    },
+    {
+      "file": "leptonica-license.txt",
+      "url": "https://raw.githubusercontent.com/DanBloomberg/leptonica/4af068b56a9674da915debea4ed7e1b9885b17e8/src/environ.h",
+      "sha256": "048b6666fc95fe45f25b5eefe0ca71a436675e9998e058cd5790757495e3f9c4"
+    }
+  ]
+}

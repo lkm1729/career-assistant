@@ -1,0 +1,10 @@
+Career Assistant 1.0.0 — Windows x64 release
+
+This is the first public release of Career Assistant under the MIT License. The MIT License applies to the Career Assistant source code; bundled third-party software, Electron/Chromium, OCR data, fonts and other assets remain subject to their own notices and licenses under resources\licenses.
+
+Installation is per current user, without elevation. Close all Career Assistant windows before installing or uninstalling; the installer will not force-terminate your work.
+User data remains at %APPDATA%\Career Assistant. Updating and normal uninstall do not delete it. Uninstall is not secure erasure. Keep a backup before changing versions; do not downgrade-edit important data.
+This installer is currently unsigned. Do not disable Windows security or certificate checks. Windows x64 is the target. Independent clean-machine acceptance and code-signing are separate release concerns and are not implied by local build checks.
+No node, npm, Python, Office or online fonts are needed to launch. Built-in PDF/DOCX/OCR resources are installed locally. Remote AI and explicitly confirmed webpage imports still need network access.
+Third-party license texts and inventory are under resources\licenses. Google Sans is bundled under OFL; MiSans files are not redistributed and the app uses a locally installed font or Windows fallback.
+No automatic updater, telemetry or cloud synchronization is added. Runtime data stays local unless the user explicitly confirms a supplier request or webpage import.

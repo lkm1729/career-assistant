@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-electron
+.npm-cache
+.electron-cache
+.test-data
+test-results
+playwright-report
+package-lock.json
+
+release
+.electron-builder-cache
