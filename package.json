@@ -1,10 +1,10 @@
 {
   "name": "career-assistant",
   "productName": "Career Assistant",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "license": "MIT",
-  "description": "Four independent AI career workspaces for Windows",
+  "description": "Five independent AI career workspaces for Windows",
   "author": "Career Assistant contributors",
   "type": "module",
   "main": "dist-electron/main.cjs",
@@ -52,7 +52,7 @@
     "productName": "Career Assistant",
     "artifactName": "Career-Assistant-${buildVersion}-win-x64.${ext}",
     "directories": {
-      "output": "release/1.0.0",
+      "output": "release/1.1.0",
       "buildResources": "build"
     },
     "files": [
@@ -114,6 +114,6 @@
         "to": "DISTRIBUTION-NOTES.txt"
       }
     ],
-    "buildVersion": "1.0.0"
+    "buildVersion": "1.1.0"
   }
 }

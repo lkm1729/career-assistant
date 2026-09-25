@@ -27,7 +27,7 @@ export function writeWorkbench(
   assessment: AssessmentSnapshot | null = null,
 ) {
   assertWorkspaceId(page);
-  if (currentId && !assessment && (page === 'score' || page === 'match')) {
+  if (currentId && !assessment && (page === 'score' || page === 'match' || page === 'interview')) {
     const row = db
       .prepare(`SELECT payload FROM ${assessmentTable(page)} WHERE id=?`)
       .get(currentId);
@@ -49,8 +49,13 @@ export function workbenchTransaction<T>(db: DatabaseSync, action: () => T): T {
   }
 }
 function assessmentTable(page: WorkspaceId) {
-  if (page !== 'score' && page !== 'match') throw new AiError('评估工作区无效。');
-  return page === 'score' ? 'score_records' : 'match_records';
+  if (page !== 'score' && page !== 'match' && page !== 'interview')
+    throw new AiError('评估工作区无效。');
+  return page === 'score'
+    ? 'score_records'
+    : page === 'match'
+      ? 'match_records'
+      : 'interview_records';
 }
 export class WorkbenchStore {
   constructor(private db: DatabaseSync) {
@@ -86,7 +91,11 @@ export class WorkbenchStore {
     const draft = this.draft(page);
     const currentId = this.current(page, state);
     let assessment = state?.assessment ?? null;
-    if (!assessment && currentId && (page === 'score' || page === 'match')) {
+    if (
+      !assessment &&
+      currentId &&
+      (page === 'score' || page === 'match' || page === 'interview')
+    ) {
       const row = this.db
         .prepare(`SELECT payload FROM ${assessmentTable(page)} WHERE id=?`)
         .get(currentId);
@@ -189,7 +198,7 @@ export class WorkbenchStore {
       throw new AiError('找不到本页评估记录，未改变当前结果。');
   }
   /** Delete one explicitly selected set atomically; preserve inputs and unrelated Undo. */
-  deleteHistory(page: 'score' | 'match', ids: string[], revision: string) {
+  deleteHistory(page: 'score' | 'match' | 'interview', ids: string[], revision: string) {
     const table = assessmentTable(page);
     return workbenchTransaction(this.db, () => {
       const state = this.state(page);
@@ -217,7 +226,7 @@ export class WorkbenchStore {
       return { deleted: unique.size };
     });
   }
-  select(page: 'score' | 'match', id: string, revision: string) {
+  select(page: 'score' | 'match' | 'interview', id: string, revision: string) {
     return workbenchTransaction(this.db, () => {
       const current = this.inspect(page);
       if (current.revision !== revision) throw new AiError('当前结果已变化，请刷新后重新选择。');

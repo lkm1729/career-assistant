@@ -117,5 +117,5 @@ export interface MaterialBridge {
   remove(page: MaterialPage, id: string, revision: string): Promise<MaterialReply>;
 }
 export function isMaterialPage(page: WorkspaceId): page is MaterialPage {
-  return ['resume', 'score', 'match', 'letter'].includes(page);
+  return ['resume', 'score', 'match', 'letter', 'interview'].includes(page);
 }

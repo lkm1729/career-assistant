@@ -1,3 +1,5 @@
+import { useInterview } from './useInterview';
+import { InterviewPanel, InterviewConfirmationDialog, InterviewHistory } from './InterviewPanel';
 import { ClearResultControl } from './ClearResultControl';
 import { appVersion } from '../shared/version';
 import { useScore } from './useScore';
@@ -42,6 +44,7 @@ export function App() {
   const ai = useAiState(snapshot, flush, refreshResume);
   const score = useScore(flush, ai, snapshot?.preferences.activeTab === 'score');
   const match = useMatch(flush, ai, snapshot?.preferences.activeTab === 'match');
+  const interview = useInterview(flush, ai);
   const [resultChanging, setResultChanging] = useState(false);
   const [dialog, setDialog] = useState<'settings' | 'history' | null>(null);
   const [collapsed, setCollapsed] = useState(false);
@@ -139,7 +142,7 @@ export function App() {
               </div>
               <h3>你的经历，由你掌握</h3>
               <p>
-                四个独立空间。
+                五个独立空间。
                 <br />
                 从你需要的那一步开始。
               </p>
@@ -240,6 +243,7 @@ export function App() {
                 id={id}
                 score={score}
                 match={match}
+                interview={interview}
                 draft={draft}
                 onChange={(patch) => updateDraft(id, patch)}
                 onSettings={() => setDialog('settings')}
@@ -254,18 +258,22 @@ export function App() {
                   key={`clear-${id}`}
                   page={id}
                   resultKey={
-                    id === 'score'
-                      ? `${score.current?.id ?? ''}:${score.historyRevision}`
-                      : id === 'match'
-                        ? `${match.current?.id ?? ''}:${match.historyRevision}`
-                        : `${!!draft.document}:${draft.currentVersionNumber}`
+                    id === 'interview'
+                      ? `${interview.current?.id ?? ''}:${interview.revision}`
+                      : id === 'score'
+                        ? `${score.current?.id ?? ''}:${score.historyRevision}`
+                        : id === 'match'
+                          ? `${match.current?.id ?? ''}:${match.historyRevision}`
+                          : `${!!draft.document}:${draft.currentVersionNumber}`
                   }
                   hasResult={
-                    id === 'score'
-                      ? !!score.current
-                      : id === 'match'
-                        ? !!match.current
-                        : !!draft.document || draft.currentVersionNumber !== null
+                    id === 'interview'
+                      ? !!interview.current
+                      : id === 'score'
+                        ? !!score.current
+                        : id === 'match'
+                          ? !!match.current
+                          : !!draft.document || draft.currentVersionNumber !== null
                   }
                   disabled={ai.busy || !!ai.testing}
                   flush={flush}
@@ -275,11 +283,13 @@ export function App() {
                   }}
                   onHistory={() => setDialog('history')}
                   onChanged={async () => {
-                    if (id === 'score') score.resetResultFeedback();
+                    if (id === 'interview') interview.resetResultFeedback();
+                    else if (id === 'score') score.resetResultFeedback();
                     else if (id === 'match') match.resetResultFeedback();
                     else ai.resetResultFeedback();
                     await refreshResume(id);
-                    if (id === 'score') await score.refresh();
+                    if (id === 'interview') await interview.refresh();
+                    else if (id === 'score') await score.refresh();
                     else if (id === 'match') await match.refresh();
                     else await ai.refresh();
                   }}
@@ -293,12 +303,13 @@ export function App() {
                     onChange={(patch) => updateDraft(id, patch)}
                     onHistory={() => setDialog('history')}
                   />
-                ) : id === 'score' ? null : id === 'match' ? null : (
+                ) : id === 'score' || id === 'match' || id === 'interview' ? null : (
                   <EvaluationPanel key={id} id={id} />
                 )}
 
                 {id === 'score' && <ScorePanel score={score} />}
                 {id === 'match' && <MatchPanel match={match} />}
+                {id === 'interview' && <InterviewPanel interview={interview} />}
               </div>
             </fieldset>
             {(score.busy || match.busy) && id !== (score.busy ? 'score' : 'match') && (
@@ -312,8 +323,7 @@ export function App() {
             <footer className="page-footer">
               <span>为下一次机会，认真准备。</span>
               <span>
-                Career Assistant <span className="footer-separator">/</span> 资料与评分版{' '}
-                {appVersion}
+                Career Assistant <span className="footer-separator">/</span> 求职工具版 {appVersion}
               </span>
             </footer>
           </main>
@@ -332,6 +342,7 @@ export function App() {
             draft={draft}
             score={score}
             match={match}
+            interview={interview}
             onClose={() => setDialog(null)}
             onEdit={() => {
               if (id === 'resume' || id === 'letter')
@@ -343,6 +354,7 @@ export function App() {
         <GenerationConfirmation />
         <ScoreConfirmationDialog score={score} />
         <MatchConfirmation match={match} />
+        <InterviewConfirmationDialog interview={interview} />
       </div>
     </AiContext.Provider>
   );

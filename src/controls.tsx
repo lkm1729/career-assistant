@@ -1,3 +1,5 @@
+import { InterviewHistory } from './InterviewPanel';
+import type { InterviewState } from './useInterview';
 import { MatchHistory } from './MatchPanel';
 import type { MatchState } from './useMatch';
 import { appVersion } from '../shared/version';
@@ -90,6 +92,7 @@ export function Settings({
 }
 export function History({
   match,
+  interview,
   id,
   draft,
   onClose,
@@ -97,6 +100,7 @@ export function History({
   score,
 }: {
   match?: MatchState;
+  interview?: InterviewState;
   score?: ScoreState;
   id: WorkspaceId;
   draft: WorkspaceDraft;
@@ -122,6 +126,7 @@ export function History({
       {(id === 'resume' || id === 'letter') && <VersionHistory onEdit={onEdit} />}
       {id === 'score' && score && <ScoreHistory score={score} />}
       {id === 'match' && match && <MatchHistory match={match} />}
+      {id === 'interview' && interview && <InterviewHistory interview={interview} />}
       <div className="modal-footer">
         <span>其他标签页不会读取这里的资料</span>
         <button className="secondary" onClick={onClose}>

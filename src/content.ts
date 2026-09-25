@@ -1,4 +1,11 @@
-import { FileText, ChartNoAxesCombined, ScanSearch, Send, type LucideIcon } from 'lucide-react';
+import {
+  FileText,
+  ChartNoAxesCombined,
+  ScanSearch,
+  Send,
+  MessagesSquare,
+  type LucideIcon,
+} from 'lucide-react';
 import type { WorkspaceId } from '../shared/contracts';
 export interface PageDefinition {
   name: string;
@@ -67,6 +74,19 @@ export const pages: Record<WorkspaceId, PageDefinition> = {
       '粘贴岗位描述，并告诉我语言、语气、字数和重点。例如：英文，300 词以内，专业自然，突出跨团队协作。',
     output: '求职信工作区',
     action: '生成求职信',
+  },
+  interview: {
+    name: '面试问答',
+    english: 'Interview prep',
+    eyebrow: 'PRACTICE WITH PURPOSE',
+    title: '把经历讲清楚，',
+    accent: '自信走进面试。',
+    subtitle: '根据目标岗位与个人经历，准备约20组英文面试问题和参考答案。',
+    icon: MessagesSquare,
+    inputLabel: '目标岗位详情',
+    placeholder: '粘贴岗位名称、职责、要求和公司背景。',
+    output: '模拟面试问答',
+    action: '生成面试问答',
   },
 };
 export const dimensions = [

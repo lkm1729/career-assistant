@@ -4,13 +4,14 @@ Windows 本地优先的 AI 求职助手，帮助你整理求职资料、分析�
 
 ## 项目介绍
 
-Career Assistant 面向 Windows x64，提供四个相互独立的 AI 求职工作台：简历/求职材料、岗位匹配、岗位评分和求职信。项目强调本地优先和资料隔离，未选择的资料不会自动跨页面共享或发送。
+Career Assistant 面向 Windows x64，提供五个相互独立的 AI 求职工作台：简历/求职材料、岗位匹配、岗位评分、求职信和面试问答。项目强调本地优先和资料隔离，未选择的资料不会自动跨页面共享或发送。
 
 应用支持本地处理 PDF、DOCX、图片和文字资料，也支持在明确确认后读取公开网页内容。AI 请求由用户配置的供应商和模型执行，应用不会自动上传资料、云同步或收集遥测数据。
 
 ## 主要功能
 
-- **四个独立工作台**：简历与求职材料、岗位匹配、岗位评分、求职信。
+- **五个独立工作台**：简历与求职材料、岗位匹配、岗位评分、求职信、面试问答。
+- **双语面试问答**：结合岗位、简历和明确选定的资料生成20组英文问答及中文对照，支持本页历史管理。
 - **多种资料格式**：PDF、DOCX、图片、纯文本，以及经确认的公开 HTTPS 网页。
 - **多供应商支持**：Chat Completions、OpenAI Responses、Gemini 原生协议和 Anthropic Messages 原生协议。
 - **发送前确认**：导入资料后可以预览、设置用途、选择发送内容，并在请求前再次确认。
@@ -21,26 +22,18 @@ Career Assistant 面向 Windows x64，提供四个相互独立的 AI 求职工�
 
 ## 下载
 
-从 [GitHub Releases](https://github.com/lkm1729/career-assistant/releases/tag/v1.0.0) 下载 Windows x64 正式版：
+1.1.0 发布后，从 [GitHub Releases](https://github.com/lkm1729/career-assistant/releases) 下载 Windows x64 正式版：
 
-- **安装程序**：`Career-Assistant-1.0.0-Setup-x64.exe`
-- **免安装 ZIP**：`Career-Assistant-1.0.0-win-x64.zip`
+- **免安装 ZIP**：`Career-Assistant-1.1.0-win-x64.zip`
 - **文件校验**：`SHA256SUMS.txt`
 
-安装程序当前未进行 Authenticode 签名。请根据 Windows 安全提示自行判断，并在运行前核对 SHA256 校验值。
+运行前请核对 `SHA256SUMS.txt` 中的 ZIP 校验值。
 
 ## 如何安装和使用
 
-### 使用安装程序
-
-1. 下载 `Career-Assistant-1.0.0-Setup-x64.exe`。
-2. 关闭正在运行的 Career Assistant。
-3. 运行安装程序并按提示完成安装。
-4. 从开始菜单启动 Career Assistant。
-
 ### 使用免安装 ZIP
 
-1. 下载 `Career-Assistant-1.0.0-win-x64.zip`。
+1. 下载 `Career-Assistant-1.1.0-win-x64.zip`。
 2. 将 ZIP 完整解压到新的本地目录。
 3. 运行目录中的 `Career Assistant.exe`。
 4. 不要直接从 ZIP 压缩包内启动程序。
@@ -61,7 +54,7 @@ Career Assistant 面向 Windows x64，提供四个相互独立的 AI 求职工�
 %APPDATA%\Career Assistant
 ```
 
-更新和正常卸载不会删除已有数据，但卸载不是安全擦除。重要资料请自行备份。
+替换解压目录不会删除已有应用数据。重要资料请自行备份；如需从全新状态开始，请在关闭应用后删除上述数据目录。
 
 ## 隐私与数据
 

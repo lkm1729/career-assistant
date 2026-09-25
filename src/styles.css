@@ -3109,3 +3109,134 @@ button.danger:hover:not(:disabled) {
 .material-dropzone[aria-disabled='true'] {
   opacity: 0.6;
 }
+
+.interview-pairs {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.interview-pairs article {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  background: var(--surface);
+}
+.interview-question {
+  color: #2364b5;
+  margin: 0 0 0.7rem;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+}
+.interview-answer {
+  color: #238250;
+  white-space: pre-wrap;
+  line-height: 1.65;
+  margin: 0;
+}
+
+:root[data-theme='dark'] .interview-question {
+  color: #80b8ff;
+}
+:root[data-theme='dark'] .interview-answer {
+  color: #74d8a1;
+}
+
+.interview-result-panel {
+  position: relative;
+  overflow: hidden;
+}
+.interview-result-panel.interview-generating {
+  animation: interview-panel-pulse 1.8s ease-in-out infinite;
+}
+.interview-result-panel.interview-generating::after {
+  content: '↓ 结果将在这里显示';
+  position: absolute;
+  inset-inline-end: 22px;
+  top: 16px;
+  padding: 5px 9px;
+  border: 1px solid var(--accent-line);
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 700;
+  animation: interview-result-arrow 1.2s ease-in-out infinite;
+}
+.interview-pairs {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.interview-pair {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  background: var(--surface);
+}
+.interview-question {
+  color: #2364b5;
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+}
+.interview-question-translation {
+  color: #2364b5;
+  font-size: 12px;
+  margin: 0 0 0.8rem;
+  white-space: pre-wrap;
+}
+.interview-answer {
+  color: #238250;
+  white-space: pre-wrap;
+  line-height: 1.65;
+  margin: 0;
+}
+.interview-answer-translation {
+  color: #238250;
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 0.25rem 0 0;
+  white-space: pre-wrap;
+}
+.interview-empty {
+  color: var(--secondary);
+}
+.interview-pairs .historical-run-info {
+  margin-block: 0 0.2rem;
+}
+:root[data-theme='dark'] .interview-question,
+:root[data-theme='dark'] .interview-question-translation {
+  color: #80b8ff;
+}
+:root[data-theme='dark'] .interview-answer,
+:root[data-theme='dark'] .interview-answer-translation {
+  color: #74d8a1;
+}
+@keyframes interview-panel-pulse {
+  0%,
+  100% {
+    box-shadow: var(--shadow);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px color-mix(in srgb, var(--accent) 12%, transparent),
+      var(--shadow);
+  }
+}
+@keyframes interview-result-arrow {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .interview-result-panel.interview-generating,
+  .interview-result-panel.interview-generating::after {
+    animation: none;
+  }
+}

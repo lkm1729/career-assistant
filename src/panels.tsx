@@ -7,6 +7,7 @@ import { WorkbenchFeedback } from './WorkbenchFeedback';
 import { Materials } from './Materials';
 import type { ScoreState } from './useScore';
 import type { MatchState } from './useMatch';
+import type { InterviewState } from './useInterview';
 import { ModelPicker, PageParameters } from './ModelPicker';
 import { useAi } from './useAi';
 import { GeneratedAdvice } from './ai-controls';
@@ -106,7 +107,9 @@ export function InputPanel({
   onSettings,
   score,
   match,
+  interview,
 }: {
+  interview?: InterviewState;
   score?: ScoreState;
   match?: MatchState;
   id: WorkspaceId;
@@ -117,11 +120,13 @@ export function InputPanel({
   const ai = useAi();
   const page = pages[id];
   const pending =
-    id === 'match'
-      ? match!.busy || match!.preparing
-      : id === 'score'
-        ? score!.busy || score!.preparing
-        : ai.pageBusy;
+    id === 'interview'
+      ? interview!.busy || interview!.preparing
+      : id === 'match'
+        ? match!.busy || match!.preparing
+        : id === 'score'
+          ? score!.busy || score!.preparing
+          : ai.pageBusy;
   return (
     <section className="card input-panel" aria-labelledby="input-heading">
       <fieldset className="workspace-fields" disabled={pending}>
@@ -148,6 +153,19 @@ export function InputPanel({
           />
           <span className="character-count">{draft.prompt.length.toLocaleString()} 字符</span>
         </div>
+        {id === 'interview' && (
+          <label className="score-paste">
+            简历详情（仅本页使用）
+            <textarea
+              aria-label="面试使用的简历详情"
+              rows={8}
+              maxLength={500000}
+              value={draft.resumeText ?? ''}
+              onChange={(e) => onChange({ resumeText: e.target.value })}
+              placeholder="粘贴用于面试的简历正文或经历摘要。"
+            />
+          </label>
+        )}
         {id === 'letter' && (
           <label className="score-paste">
             用于撰写的简历正文（仅本页使用，不会自动读取设计简历页）
@@ -201,24 +219,29 @@ export function InputPanel({
             <input
               type="checkbox"
               checked={
-                id === 'score'
-                  ? score!.sendImages
-                  : id === 'match'
-                    ? match!.sendImages
-                    : ai.sendImages
+                id === 'interview'
+                  ? interview!.sendImages
+                  : id === 'score'
+                    ? score!.sendImages
+                    : id === 'match'
+                      ? match!.sendImages
+                      : ai.sendImages
               }
               onChange={(e) =>
-                id === 'score'
-                  ? score!.setSendImages(e.target.checked)
-                  : id === 'match'
-                    ? match!.setSendImages(e.target.checked)
-                    : ai.setSendImages(e.target.checked)
+                id === 'interview'
+                  ? interview!.setSendImages(e.target.checked)
+                  : id === 'score'
+                    ? score!.setSendImages(e.target.checked)
+                    : id === 'match'
+                      ? match!.setSendImages(e.target.checked)
+                      : ai.setSendImages(e.target.checked)
               }
             />
-            本次发送页面图像（需模型支持视觉）；取消则仅发送抽取文字，评分不提供完整总分
+            本次发送页面图像（需模型支持视觉）；取消则仅发送抽取文字
+            {id === 'score' ? '，评分不提供完整总分' : ''}
           </label>
         }
-        {(id === 'match' || id === 'letter') && (
+        {(id === 'match' || id === 'letter' || id === 'interview') && (
           <label className="score-paste">
             本页补充材料文字
             <textarea
@@ -241,17 +264,20 @@ export function InputPanel({
       </fieldset>
       <ConnectionBadge
         connection={
-          id === 'score' && score?.busy
-            ? score.runningConnection
-            : id === 'match' && match?.busy
-              ? match.runningConnection
-              : (id === 'resume' || id === 'letter') && ai.pageBusy && ai.generating
-                ? ai.runningConnection
-                : ai.catalog
-                  ? resolvedConnection(ai.catalog, id)
-                  : null
+          id === 'interview' && interview?.busy
+            ? interview.runningConnection
+            : id === 'score' && score?.busy
+              ? score.runningConnection
+              : id === 'match' && match?.busy
+                ? match.runningConnection
+                : (id === 'resume' || id === 'letter') && ai.pageBusy && ai.generating
+                  ? ai.runningConnection
+                  : ai.catalog
+                    ? resolvedConnection(ai.catalog, id)
+                    : null
         }
         label={
+          (id === 'interview' && interview?.busy) ||
           (id === 'score' && score?.busy) ||
           (id === 'match' && match?.busy) ||
           ((id === 'resume' || id === 'letter') && ai.pageBusy && ai.generating)
@@ -267,20 +293,24 @@ export function InputPanel({
         <button
           className="primary"
           disabled={
-            (id === 'match'
-              ? !ai.catalog?.pages.match.modelId
-              : id === 'score'
-                ? !ai.catalog?.pages.score.modelId
-                : !ai.connection) ||
+            (id === 'interview'
+              ? !ai.catalog?.pages.interview.modelId
+              : id === 'match'
+                ? !ai.catalog?.pages.match.modelId
+                : id === 'score'
+                  ? !ai.catalog?.pages.score.modelId
+                  : !ai.connection) ||
             ai.busy ||
             !!ai.testing
           }
           onClick={() =>
-            void (id === 'score'
-              ? score!.prepare()
-              : id === 'match'
-                ? match!.prepare()
-                : ai.prepare())
+            void (id === 'interview'
+              ? interview!.prepare()
+              : id === 'score'
+                ? score!.prepare()
+                : id === 'match'
+                  ? match!.prepare()
+                  : ai.prepare())
           }
           title={id !== 'match' ? '发送前将展示资料与供应商供确认' : '发送前将展示岗位与简历供确认'}
         >
@@ -299,13 +329,15 @@ export function InputPanel({
       </div>
       <WorkbenchFeedback id={id} score={score} match={match} />
       <p className="stage-caption">
-        {id === 'resume' || id === 'letter'
-          ? id === 'resume'
-            ? '支持选中的本页资料生成与版本管理；个人项目网页需单独确认读取并勾选。'
-            : '支持本页简历、岗位与补充材料生成、调整和恢复求职信；发送前单独确认。'
-          : id === 'score'
-            ? '固定30/30/20/20权重；视觉缺失或覆盖不完整时仅显示部分评价。'
-            : '逐项核实岗位与简历证据；覆盖率不是录用概率或招聘方ATS分数。'}
+        {id === 'interview'
+          ? '根据本页岗位和简历生成20组英文问答；参考答案需要候选人核对并补充事实。'
+          : id === 'resume' || id === 'letter'
+            ? id === 'resume'
+              ? '支持选中的本页资料生成与版本管理；个人项目网页需单独确认读取并勾选。'
+              : '支持本页简历、岗位与补充材料生成、调整和恢复求职信；发送前单独确认。'
+            : id === 'score'
+              ? '固定30/30/20/20权重；视觉缺失或覆盖不完整时仅显示部分评价。'
+              : '逐项核实岗位与简历证据；覆盖率不是录用概率或招聘方ATS分数。'}
       </p>
     </section>
   );

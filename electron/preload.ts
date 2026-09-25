@@ -43,6 +43,13 @@ const bridge: DesktopBridge = {
     takeFailedPreview: (runId) => ipcRenderer.invoke('match:preview:take', runId),
     discardFailedPreview: (runId) => ipcRenderer.invoke('match:preview:discard', runId),
   },
+  interview: {
+    prepare: (sendImages) => ipcRenderer.invoke('interview:prepare', sendImages),
+    run: (request) => ipcRenderer.invoke('interview:run', request),
+    cancel: (id) => ipcRenderer.invoke('ai:cancel', id),
+    history: () => ipcRenderer.invoke('interview:history'),
+    deleteMany: (ids, revision) => ipcRenderer.invoke('interview:delete-many', ids, revision),
+  },
   score: {
     takeFailedPreview: (runId) => ipcRenderer.invoke('score:preview:take', runId),
     discardFailedPreview: (runId) => ipcRenderer.invoke('score:preview:discard', runId),
