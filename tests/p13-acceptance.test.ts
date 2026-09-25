@@ -60,7 +60,7 @@ for (const protocol of ['chat-completions', 'responses', 'gemini', 'anthropic'] 
           parameterSupport: emptyParameters(),
           parameters: {},
         });
-        for (const page of workspaceIds) {
+        for (const page of workspaceIds.filter((id) => id !== 'interview')) {
           store.registry.select(page, model.id, {}, store.registry.catalog().pages[page].revision);
           const file = join(dir, page + '.png');
           writeFileSync(file, 'synthetic');
@@ -168,6 +168,7 @@ for (const protocol of ['chat-completions', 'responses', 'gemini', 'anthropic'] 
             const c = service.prepareScore(images);
             return { id: c.runId, run: () => service.score(c) };
           }
+          if (page === 'interview') throw new Error('interview uses a separate workflow');
           const draft = workspace.readWorkspace(page),
             m = materials.manifest(page, images);
           const c: GenerationRequest = {
@@ -192,7 +193,7 @@ for (const protocol of ['chat-completions', 'responses', 'gemini', 'anthropic'] 
           scores.list().length,
           matches.list().length,
         ];
-        for (const page of workspaceIds) {
+        for (const page of workspaceIds.filter((id) => id !== 'interview')) {
           for (const images of [true, false]) {
             answer = response(page, images);
             const c = prepare(page, images),
@@ -252,7 +253,7 @@ for (const protocol of ['chat-completions', 'responses', 'gemini', 'anthropic'] 
           capabilities: { ...model.capabilities, images: 'unsupported' },
         });
         const before = mock.requests.length;
-        for (const page of workspaceIds) {
+        for (const page of workspaceIds.filter((id) => id !== 'interview')) {
           if (page === 'score' || page === 'match')
             assert.throws(() => prepare(page, true), /视觉能力/);
           else await assert.rejects(prepare(page, true).run(), /视觉能力/);

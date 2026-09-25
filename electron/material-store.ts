@@ -17,7 +17,7 @@ import {
 } from '../shared/materials';
 import type { ChatContent } from './chat-completions';
 export function assertMaterialPage(page: unknown): asserts page is MaterialPage {
-  if (!['resume', 'score', 'match', 'letter'].includes(String(page)))
+  if (!['resume', 'score', 'match', 'letter', 'interview'].includes(String(page)))
     throw new AiError('此工作区尚未接入附件。');
 }
 export function assertPurpose(purpose: unknown): asserts purpose is MaterialPurpose {

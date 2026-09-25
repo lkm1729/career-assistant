@@ -114,7 +114,7 @@ const report = [
   'REVIEW REQUIRED BEFORE PUBLIC DISTRIBUTION',
   ...review.map((e) => e.name + ': ' + e.issue),
   '',
-  'The project author has not selected a top-level open-source license; do not describe the application as licensed under these third-party terms.',
+  'Career Assistant source code is licensed under MIT (see the repository LICENSE); bundled third-party materials follow their own licenses and notices.',
 ];
 writeFileSync(join(out, 'THIRD-PARTY-NOTICES.txt'), report.join('\n') + '\n');
 const hashes = Object.fromEntries(

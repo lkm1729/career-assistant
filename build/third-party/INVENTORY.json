@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "platform": "win32-x64",
   "generatedFrom": "package-lock.json installed production dependency closure",
   "entries": [

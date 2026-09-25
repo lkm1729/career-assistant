@@ -1,3 +1,4 @@
+import { InterviewStore } from './interview-store.js';
 import { AiError } from '../shared/ai';
 import { FileImportDrafts } from './material-file-drafts';
 import { readWeb, webReadDiagnostic } from './web-material';
@@ -47,6 +48,7 @@ let aiService: AiService | null = null;
 let materials: MaterialStore | null = null;
 let scores: ScoreStore | null = null;
 let matches: MatchStore | null = null;
+let interviews: InterviewStore | null = null;
 let importing: AbortController | null = null;
 let closeAllowed = false;
 let closing = false;
@@ -121,7 +123,8 @@ else {
         matches = new MatchStore(
           new DatabaseSync(join(app.getPath('userData'), 'workspace.sqlite')),
         );
-        aiService = new AiService(aiStore, store, materials, scores, matches);
+        interviews = new InterviewStore(join(app.getPath('userData'), 'workspace.sqlite'));
+        aiService = new AiService(aiStore, store, materials, scores, matches, interviews);
       } catch {
         /* Keep the window usable for a non-destructive storage error. */
       }
@@ -413,6 +416,38 @@ else {
           if (!matches) throw new Error('Match store unavailable');
           ready().service.assertIdle();
           return { ok: true, deleted: matches.deleteMany(ids, revision).deleted };
+        } catch (error) {
+          return { ok: false, diagnostic: publicAiDiagnostic(error) };
+        }
+      });
+      ipcMain.handle('interview:prepare', (event, sendImages) => {
+        trusted(event);
+        try {
+          if (importing) throw new Error('Import in progress');
+          return { ok: true, value: ready().service.prepareInterview(sendImages) };
+        } catch (error) {
+          return { ok: false, diagnostic: publicAiDiagnostic(error) };
+        }
+      });
+      ipcMain.handle('interview:run', async (event, request) => {
+        trusted(event);
+        try {
+          if (importing) throw new Error('Import in progress');
+          return { ok: true, value: await ready().service.interview(request) };
+        } catch (error) {
+          return { ok: false, diagnostic: publicAiDiagnostic(error) };
+        }
+      });
+      ipcMain.handle('interview:history', (event) => {
+        trusted(event);
+        if (!interviews) throw new Error('Interview store unavailable');
+        return interviews.list();
+      });
+      ipcMain.handle('interview:delete-many', (event, ids, revision) => {
+        trusted(event);
+        try {
+          ready().service.assertIdle();
+          return { ok: true, deleted: interviews!.deleteMany(ids, revision).deleted };
         } catch (error) {
           return { ok: false, diagnostic: publicAiDiagnostic(error) };
         }
@@ -807,6 +842,7 @@ else {
     materials?.close();
     scores?.close();
     matches?.close();
+    interviews?.close();
     aiStore?.close();
     store?.close();
   });

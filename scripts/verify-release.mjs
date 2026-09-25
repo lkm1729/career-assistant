@@ -27,6 +27,23 @@ assert.equal(
   entries.some((name) => /^\/(scripts|tests|\.test-data|\.npm-cache)(\/|$)/.test(name)),
   false,
 );
+// Runtime profiles belong outside the distributable, even when an existing local
+// installation contains encrypted supplier settings and interview history.
+const privateFile =
+  /^(?:workspace\.sqlite(?:-wal|-shm)?|\.env(?:\..+)?|credentials?\.json|api[-_]?keys?\.json)$/i;
+assert.equal(
+  entries.some((name) => privateFile.test(name.split('/').at(-1))),
+  false,
+  'ASAR must not include runtime credentials or records',
+);
+for (const entry of readdirSync(directory, { recursive: true, withFileTypes: true })) {
+  if (entry.isFile())
+    assert.equal(
+      privateFile.test(entry.name),
+      false,
+      'Private runtime file in release: ' + entry.name,
+    );
+}
 // Version numbers alone cannot detect an interrupted same-version rebuild.
 // Pass native paths to ASAR: nested archive entries use platform separators.
 const projectRoot = fileURLToPath(new URL('..', import.meta.url));

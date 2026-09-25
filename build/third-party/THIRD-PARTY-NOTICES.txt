@@ -1,4 +1,4 @@
-THIRD-PARTY SOFTWARE NOTICES — Career Assistant 1.0.0
+THIRD-PARTY SOFTWARE NOTICES — Career Assistant 1.1.0
 
 This inventory preserves license texts shipped with installed npm packages and supplemental upstream notices. It is not a grant of rights for Career Assistant itself. Electron/Chromium bundled notices are also shipped as LICENSE.electron.txt and LICENSES.chromium.html beside the EXE. Native/OCR data upstream licenses are included; see provenance.json.
 
@@ -252,4 +252,4 @@ REVIEW REQUIRED BEFORE PUBLIC DISTRIBUTION
 @tesseract.js-data/eng: Installed npm archive declares MIT but contains no full license text; upstream supplemental notices are included separately. Do not interpret this inventory as a legal clearance.
 tr46: Installed npm archive declares MIT but contains no full license text; upstream supplemental notices are included separately. Do not interpret this inventory as a legal clearance.
 
-The project author has not selected a top-level open-source license; do not describe the application as licensed under these third-party terms.
+Career Assistant source code is licensed under MIT (see the repository LICENSE); bundled third-party materials follow their own licenses and notices.

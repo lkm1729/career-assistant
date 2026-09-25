@@ -38,18 +38,23 @@ export function ConnectionBadge({
 }
 export function HistoricalRunInfo({
   record,
+  kind = '评估',
 }: {
   record: { createdAt?: string; connection?: ConnectionInfo | null };
+  kind?: '评估' | '生成';
 }) {
   const time = localRecordTime(record.createdAt);
   return (
     <footer role="group" className="historical-run-info" aria-label="当次评估信息">
       <span>
-        评估记录时间（本地）· <time dateTime={time.iso}>{time.label}</time>
+        {kind}记录时间（本地）· <time dateTime={time.iso}>{time.label}</time>
       </span>
       <span>
         当次供应商 / 模型 · {record.connection?.providerName || '未记录'} /{' '}
         {record.connection?.modelName || record.connection?.modelId || '未记录'}
+      </span>
+      <span>
+        接口协议 · {record.connection ? protocolLabel(record.connection.protocol) : '未记录'}
       </span>
     </footer>
   );

@@ -16,7 +16,7 @@ function fixture() {
   seedO4(path);
   return { path, ...o4Stores(path) };
 }
-for (const page of workspaceIds) {
+for (const page of workspaceIds.filter((id) => id !== 'interview')) {
   test(`${page}: clear/undo persists, preserves inputs/history/materials and other pages`, () => {
     const f = fixture();
     try {

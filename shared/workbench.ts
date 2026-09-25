@@ -1,9 +1,12 @@
 import type { ScoreRecord } from './scoring';
+import type { InterviewRecord } from './interview';
 import type { MatchRecord } from './matching';
 import type { WorkspaceDraft, WorkspaceId } from './contracts';
 import type { AiDiagnostic } from './diagnostics';
 export type AssessmentSnapshot =
-  { page: 'score'; record: ScoreRecord } | { page: 'match'; record: MatchRecord };
+  | { page: 'score'; record: ScoreRecord }
+  | { page: 'match'; record: MatchRecord }
+  | { page: 'interview'; record: InterviewRecord };
 export interface WorkbenchSnapshot {
   assessment?: AssessmentSnapshot | null;
   page: WorkspaceId;
@@ -19,5 +22,9 @@ export interface WorkbenchBridge {
   inspect(page: WorkspaceId): Promise<WorkbenchSnapshot>;
   clear(expected: WorkbenchSnapshot): Promise<WorkbenchReply>;
   undo(expected: WorkbenchSnapshot): Promise<WorkbenchReply>;
-  select(page: 'score' | 'match', id: string, revision: string): Promise<WorkbenchReply>;
+  select(
+    page: 'score' | 'match' | 'interview',
+    id: string,
+    revision: string,
+  ): Promise<WorkbenchReply>;
 }
